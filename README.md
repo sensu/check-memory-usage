@@ -2,23 +2,36 @@
 ![Go Test](https://github.com/nixwiz/check-memory-usage/workflows/Go%20Test/badge.svg)
 ![goreleaser](https://github.com/nixwiz/check-memory-usage/workflows/goreleaser/badge.svg)
 
-# Sensu memory usage check
+# Sensu memory usage checks
 
 ## Table of Contents
 - [Overview](#overview)
+  - [Checks](#checks)
 - [Usage examples](#usage-examples)
+  - [check-memory-usage](#check-memory-usage)
+  - [check-swap-usage](#check-swap-usage)
 - [Configuration](#configuration)
   - [Asset registration](#asset-registration)
-  - [Check definition](#check-definition)
+  - [Check definitions](#check-definitions)
 - [Installation from source](#installation-from-source)
 - [Contributing](#contributing)
 
 ## Overview
 
-The Sensu memory usage check is a [Sensu Check][1] that provides alerting and
-metrics for memory usage.  Metrics are provided in [nagios_perfdata][5] format.
+The Sensu memory usage checks are a collectoin of [Sensu Checks][1] that provide
+alerting and metrics for memory and swap usage.  Metrics are provided in
+[nagios_perfdata][5] format.
+
+### Checks
+
+This collection contains the following checks:
+
+* `check-memory-usage` - for checking memory usage
+* `check-swap-usage` - for checking swap usage
 
 ## Usage examples
+
+### check-memory-usage
 
 ```
 Check memory usage and provide metrics
@@ -32,11 +45,32 @@ Available Commands:
   version     Print the version number of this plugin
 
 Flags:
-  -c, --critical float   Critical threshold for overall CPU usage (default 90)
-  -w, --warning float    Warning threshold for overall CPU usage (default 75)
+  -c, --critical float   Critical threshold for overall memory usage (default 90)
+  -w, --warning float    Warning threshold for overall memory usage (default 75)
   -h, --help             help for check-memory-usage
 
 Use "check-memory-usage [command] --help" for more information about a command.
+```
+
+### check-swap-usage
+
+```
+Check swap usage and provide metrics
+
+Usage:
+  check-swap-usage [flags]
+  check-swap-usage [command]
+
+Available Commands:
+  help        Help about any command
+  version     Print the version number of this plugin
+
+Flags:
+  -c, --critical float   Critical threshold for overall swap usage (default 90)
+  -w, --warning float    Warning threshold for overall swap usage (default 75)
+  -h, --help             help for check-memory-usage
+
+Use "check-swap-usage [command] --help" for more information about a command.
 ```
 
 ## Configuration
@@ -54,7 +88,9 @@ sensuctl asset add nixwiz/check-memory-usage
 If you're using an earlier version of sensuctl, you can find the asset on the
 [Bonsai Asset Index][3].
 
-### Check definition
+### Check definitions
+
+#### check-memory-usage
 
 ```yml
 ---
@@ -77,17 +113,41 @@ spec:
   - nixwiz/check-memory-usage
 ```
 
+#### check-swap-usage
+
+```yml
+---
+type: CheckConfig
+api_version: core/v2
+metadata:
+  name: check-swap-usage
+  namespace: default
+spec:
+  command: >-
+    check-swap-usage
+    --critical 90
+    --warning 75
+  output_metric_format: nagios_perfdata
+  output_metric_handlers:
+    - influxdb
+  subscriptions:
+  - system
+  runtime_assets:
+  - nixwiz/check-memory-usage
+```
+
 ## Installation from source
 
 The preferred way of installing and deploying this plugin is to use it as an
 Asset. If you would like to compile and install the plugin from source or
-contribute to it, download the latest version or create an executable from this
+contribute to it, download the latest version or create executables from this
 source.
 
 From the local path of the check-cpu-usage repository:
 
 ```
-go build
+go build ./cmd/check-memory-usage/
+go build ./cmd/check-swap-usage/
 ```
 
 ## Contributing

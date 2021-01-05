@@ -30,7 +30,7 @@ var (
 			Argument:  "critical",
 			Shorthand: "c",
 			Default:   float64(90),
-			Usage:     "Critical threshold for overall CPU usage",
+			Usage:     "Critical threshold for overall memory usage",
 			Value:     &plugin.Critical,
 		},
 		{
@@ -38,7 +38,7 @@ var (
 			Argument:  "warning",
 			Shorthand: "w",
 			Default:   float64(75),
-			Usage:     "Warning threshold for overall CPU usage",
+			Usage:     "Warning threshold for overall memory usage",
 			Value:     &plugin.Warning,
 		},
 	}
