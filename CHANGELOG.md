@@ -7,6 +7,14 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
 
+## [0.2.0] - 2021-01-05
+
+### Changed
+- Reorganized for multiple checks
+
+### Added
+- Added swap check
+
 ## [0.1.0] - 2020-12-30
 
 ### Added
