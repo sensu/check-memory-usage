@@ -4,7 +4,8 @@
 *.dll
 *.so
 *.dylib
-check-memory-usage
+cmd/check-memory-usage/check-memory-usage
+cmd/check-swap-usage/check-swap-usage
 
 # Test binary, build with `go test -c`
 *.test
