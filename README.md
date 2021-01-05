@@ -2,7 +2,7 @@
 ![Go Test](https://github.com/nixwiz/check-memory-usage/workflows/Go%20Test/badge.svg)
 ![goreleaser](https://github.com/nixwiz/check-memory-usage/workflows/goreleaser/badge.svg)
 
-# Sensu memory usage checks
+# Sensu memory and swap usage checks
 
 ## Table of Contents
 - [Overview](#overview)
