@@ -7,6 +7,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
 
+### Changed
+- gofmt -s on test files
+
 ## [0.2.1] - 2021-01-05
 
 ### Changed
