@@ -82,7 +82,7 @@ using an asset, please consider doing so! If you're using sensuctl 5.13 with
 Sensu Backend 5.13 or later, you can use the following command to add the asset:
 
 ```
-sensuctl asset add nixwiz/check-memory-usage
+sensuctl asset add sensu/check-memory-usage
 ```
 
 If you're using an earlier version of sensuctl, you can find the asset on the
@@ -110,7 +110,7 @@ spec:
   subscriptions:
   - system
   runtime_assets:
-  - nixwiz/check-memory-usage
+  - sensu/check-memory-usage
 ```
 
 #### check-swap-usage
@@ -133,7 +133,7 @@ spec:
   subscriptions:
   - system
   runtime_assets:
-  - nixwiz/check-memory-usage
+  - sensu/check-memory-usage
 ```
 
 ## Installation from source
@@ -156,6 +156,6 @@ For more information about contributing to this plugin, see [Contributing][4].
 
 [1]: https://docs.sensu.io/sensu-go/latest/reference/checks/
 [2]: https://docs.sensu.io/sensu-go/latest/reference/assets/
-[3]: https://bonsai.sensu.io/assets/nixwiz/check-memory-usage
+[3]: https://bonsai.sensu.io/assets/sensu/check-memory-usage
 [4]: https://github.com/sensu/sensu-go/blob/master/CONTRIBUTING.md
 [5]: https://docs.sensu.io/sensu-go/latest/observability-pipeline/observe-schedule/collect-metrics-with-checks/#supported-output-metric-formats
